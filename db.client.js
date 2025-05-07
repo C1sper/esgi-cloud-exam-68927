@@ -1,6 +1,3 @@
-// Charge les variables d'environnement depuis le secret file Render
-require('dotenv').config({ path: '/etc/secrets/.env' });
-
 const { Sequelize } = require('sequelize');
 
 const {
@@ -11,10 +8,8 @@ const {
   DB_NAME,
 } = process.env;
 
-// Construction de l'URL de connexion
 const databaseUrl = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
-// Initialisation de Sequelize
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
   dialectOptions: {
